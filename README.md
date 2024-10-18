@@ -4,16 +4,18 @@
 ### Setting custom passwords
 By default, the three passwords are `password1`, `password2`, and `password3`. To change this, go to the file called `PasswordControl.java`. It will look like below:
 
-`import java.util.Random;`
-` `
-`public class PasswordControl {`
-    public String randomize() {
-        Random rand = new Random();
-        String[] passwords = new String[] { "password1", "password2", "password3" }; // Enter passwords like shown, making sure not to mess with code.
-        int randomPassword = rand.nextInt(0, 3); // Make sure second number here is the number of passwords you have available, otherwise some may not show up.
-        return passwords[randomPassword];
-    }
-}`
+`import java.util.Random;                                                                                                                                       `
+`                                                                                                                                                               `
+`public class PasswordControl {                                                                                                                                 `
+`    public String randomize() {                                                                                                                                `
+`        Random rand = new Random();                                                                                                                            `
+`        String[] passwords = new String[] { "password1", "password2", "password3" }; // Enter passwords like shown, making sure not to mess with code.         `
+`        int randomPassword = rand.nextInt(0, 3); // Make sure second number here is the number of passwords you have available, otherwise some may not show up.`
+`        return passwords[randomPassword];                                                                                                                      `
+`    }                                                                                                                                                          `
+`}                                                                                                                                                              `
+
+You can mess with some of this code without daamaging the program (DO NOT RENAME THE FILE). Change your passwords, or add more by adding a comma, space, then your ext password. Change the second number in the `rand.nextInt()` to match with how many passwords you have, and boom. They will have a chance to show up in the program.
 
 ### In order to play the game, you need to compile the java file manually
 - **Step 1:** Right click on your wallpaper and click `Open in Terminal`
