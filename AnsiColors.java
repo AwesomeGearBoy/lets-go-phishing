@@ -1,6 +1,6 @@
 /**
  * This object allows you to customize colors used in printing out text in the terminal by using ANSI Color Codes.
- * Call to the color and/or background, and all text after it will be that color/background
+ * Call to the color and/or background, and all text after it will be that color/background.
  * After done with those colors, be sure to reset!
 */
 public class AnsiColors {
