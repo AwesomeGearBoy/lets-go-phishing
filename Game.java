@@ -1,18 +1,18 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
     public static void main(String[] args) {
-        String[] passwords = new String[] { "password1", "password2", "password3" };
-        Random rand = new Random();
-        int randomPassword = rand.nextInt(0, 2);
-        String password = passwords[randomPassword];
+        PasswordControl passkey = new PasswordControl();
+
+        String password = passkey.randomize();
         String guess = "";
         String userName = "";
         char choice = 'A';
         boolean systemRunning = true;
         Scanner input = new Scanner(System.in);
+
         System.out.println("Hello! Welcome to Who Wants To Be A Hacker! This is a game created to simulate how hackers use phishing to guess your password. You, or other people after you, will attempt to guess the password using clues that have been provided to you. The hacker with the fastest time wins!");
+        
         do {
             do {
                 System.out.print("Enter password: ");
@@ -31,6 +31,7 @@ public class Game {
                     System.out.println("Incorrect password. Try again.");
                 }
             } while (!guess.equals(password));
+
             do {
                 System.out.println("Would you like to play again (Y/N)?");
                 input.nextLine();
@@ -39,13 +40,16 @@ public class Game {
                     System.out.println("Invalid selection. Please try again.");
                 }
             } while (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n');
+
             if (choice == 'Y' || choice == 'y') {
+                password = passkey.randomize();
                 systemRunning = true;
             } else if (choice == 'N' || choice == 'n') {
                 System.out.println("Have a nice day!");
                 systemRunning = false;
             }
         } while (systemRunning);
+
         input.close();
         System.exit(0);
     }
