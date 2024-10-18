@@ -17,8 +17,9 @@ public class Game {
             do {
                 System.out.print("Enter password: ");
                 guess = input.next();
-                if (guess == password) {
+                if (guess.equals(password)) {
                     System.out.println("We have a winner! Please, tell us your name: ");
+                    userName = input.next();
                     if (userName.equals("") || userName.equals("No") || userName.equals("I will not give you my name.") || userName.equals("I will not give you my name") || userName.equals("i will not give you my name") || userName.equals("no") || userName.equals("yes") || userName.equals("Yes")) {
                         System.out.println("Good! You passed that test too! Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this, that can store that information.");
                         System.out.println("Congratulations for cracking the password!");
@@ -26,10 +27,13 @@ public class Game {
                         System.out.println("Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this that can store that information.");
                         System.out.println("Congratulations for cracking the password, " + userName + ".");
                     }
+                } else {
+                    System.out.println("Incorrect password. Try again.");
                 }
-            } while (guess != password);
+            } while (!guess.equals(password));
             do {
                 System.out.println("Would you like to play again (Y/N)?");
+                input.nextLine();
                 choice = input.nextLine().charAt(0);
                 if (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n') {
                     System.out.println("Invalid selection. Please try again.");
@@ -38,6 +42,7 @@ public class Game {
             if (choice == 'Y' || choice == 'y') {
                 systemRunning = true;
             } else if (choice == 'N' || choice == 'n') {
+                System.out.println("Have a nice day!");
                 systemRunning = false;
             }
         } while (systemRunning);
