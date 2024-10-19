@@ -37,11 +37,11 @@ public class Game {
     public static void guessing(AnsiColors color, Scanner input, String password) {
         String guess = "";
         do {
-            System.out.print(color.yellow() + color.blackBackground() + "Enter password: " + color.reset());
+            System.out.print(color.yellow() + color.blackBackground() + "Enter password:" + color.reset() + " ");
             guess = input.next();
             if (guess.equals(password)) {
                 String userName = "";
-                System.out.print(color.green() + color.blackBackground() + "We have a winner! Please, tell us your name: " + color.reset());
+                System.out.print(color.green() + color.blackBackground() + "We have a winner! Please, tell us your name:" + color.reset() + " ");
                 userName = input.next();
                 if (userName.equals("") || userName.equals("No") || userName.equals("I will not give you my name.") || userName.equals("I will not give you my name") || userName.equals("i will not give you my name") || userName.equals("no") || userName.equals("yes") || userName.equals("Yes")) {
                     System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too! Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this, that can store that information." + color.reset());
