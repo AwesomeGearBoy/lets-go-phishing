@@ -48,7 +48,7 @@ public class LetsGoPhishing {
                     System.out.println(color.green() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
                 } else {
                     System.out.println(color.red() + color.blackBackground() + "Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this that can store that information." + color.reset());
-                    System.out.println(color.red() + color.blackBackground() + "Congratulations for cracking the password, " + userName + "." + color.reset());
+                    System.out.println(color.red() + color.blackBackground() + "Congratulations for cracking the password, >> " + color.purple() + userName + color.red() + " <<." + color.reset());
                 }
             } else {
                 System.out.println(color.red() + color.blackBackground() + "Incorrect password. Try again." + color.reset());
