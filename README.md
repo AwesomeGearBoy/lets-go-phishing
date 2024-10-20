@@ -1,19 +1,19 @@
-### Welcome to *Who Wants To Be a Hacker*
-*Who Wants to be a Hacker* is a game created in Java made to teach about how hackers can use phishing to guess a password of a user. Hackers can use personal information found in emails, social media, and other sources to guess at a password for a user. You, as someone who works in cybersecurity, will teach this by sending emails out to people in your workplace with either real or fake personal information. When the time comes, run this program on a computer and have people guess at what the password is. This game allows multiple passwords to be entered and randomly picked each time the game runs.
+### Welcome to *Let's Go Phishing*
+*Let's Go Phishing* is a game created in Java made to teach about how hackers can use phishing to guess a password of a user. Hackers can use personal information found in emails, social media, and other sources to guess at a password for a user. You, as someone who works in cybersecurity, will teach this by sending emails out to people in your workplace with either real or fake personal information. When the time comes, run this program on a computer and have people guess at what the password is. This game allows multiple passwords to be entered and randomly picked each time the game runs.
 
 ### Setting custom passwords
 By default, the three passwords are `password1`, `password2`, and `password3`. To change this, go to the file called `PasswordControl.java`. It will look like below:
 
-`import java.util.Random;                                                                                                                                       `
-`                                                                                                                                                               `
-`public class PasswordControl {                                                                                                                                 `
-`    public String randomize() {                                                                                                                                `
-`        Random rand = new Random();                                                                                                                            `
-`        String[] passwords = new String[] { "password1", "password2", "password3" }; // Enter passwords like shown, making sure not to mess with code.         `
-`        int randomPassword = rand.nextInt(0, 3); // Make sure second number here is the number of passwords you have available, otherwise some may not show up.`
-`        return passwords[randomPassword];                                                                                                                      `
-`    }                                                                                                                                                          `
-`}                                                                                                                                                              `
+import java.util.Random;                                                                                                                                       
+                                                                                                                                                               
+public class PasswordControl {                                                                                                                                 
+    public String randomize() {                                                                                                                                
+        Random rand = new Random();                                                                                                                            
+        String[] passwords = new String[] { "password1", "password2", "password3" }; // Enter passwords like shown, making sure not to mess with code.         
+        int randomPassword = rand.nextInt(0, 3); // Make sure second number here is the number of passwords you have available, otherwise some may not show up.
+        return passwords[randomPassword];                                                                                                                      
+    }                                                                                                                                                          
+}                                                                                                                                                              
 
 You can mess with some of this code without daamaging the program (DO NOT RENAME THE FILE). Change your passwords, or add more by adding a comma, space, then your ext password. Change the second number in the `rand.nextInt()` to match with how many passwords you have, and boom. They will have a chance to show up in the program.
 
@@ -29,3 +29,15 @@ You can mess with some of this code without daamaging the program (DO NOT RENAME
 - **Step 5:** In order to run the file, use the console command `java Game`
 
 These steps will allow for the program to run successfully.
+
+### Brief list of all commands you will need and what they do
+
+`li` - Lists what is inside of the directory you are in (files, other directories, etc.). Used to tell where you are.
+
+`cd directory-name` - Stands for "Change Directory." This allows you to proceed forward to whatever directory. *Hint: Press `TAB` to automatically finish the directory's name while typing. Makes it a lot easier.*
+
+`cd..` - Takes you back a directory.
+
+`javac FileName.java` - Stands for "Java Compile." Use to compile the java files so that te computor can read them. *Hint: The fastest way to compile all files at once is like this: `javac *.java`. That will compile all java files in a directory.*
+
+`java FileName` - Runs a **compiled** java file.

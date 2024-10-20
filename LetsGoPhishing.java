@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Game {
+public class LetsGoPhishing {
     public static void main(String[] args) {
         String password;
         boolean systemRunning = true;
@@ -25,7 +25,7 @@ public class Game {
      * @param color Needed for custom colors.
     */
     public static String intro(AnsiColors color) {
-        return color.cyan() + color.blackBackground() + "Hello! Welcome to Who Wants To Be A Hacker!" + "\nThis is a game created to simulate how hackers use phishing to guess your password." + "\nYou, or other people after you, will attempt to guess the password using clues that have been provided to you." + "\nThe hacker with the fastest time wins!" + color.reset();
+        return color.cyan() + color.blackBackground() + "Hello! Welcome to Let's Go Phishing!" + "\nThis is a game created to simulate how hackers use phishing to guess your password." + "\nYou, or other people after you, will attempt to guess the password using clues that have been provided to you." + "\nThe hacker with the fastest time wins!" + color.reset();
     }
 
     /**
@@ -47,8 +47,8 @@ public class Game {
                     System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too! Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this, that can store that information." + color.reset());
                     System.out.println(color.green() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
                 } else {
-                    System.out.println(color.blue() + color.blackBackground() + "Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this that can store that information." + color.ANSI_RESET);
-                    System.out.println(color.yellow() + color.blackBackground() + "Congratulations for cracking the password, " + color.red() + userName + color.yellow() + "." + color.reset());
+                    System.out.println(color.red() + color.blackBackground() + "Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this that can store that information." + color.reset());
+                    System.out.println(color.red() + color.blackBackground() + "Congratulations for cracking the password, " + userName + "." + color.reset());
                 }
             } else {
                 System.out.println(color.red() + color.blackBackground() + "Incorrect password. Try again." + color.reset());
