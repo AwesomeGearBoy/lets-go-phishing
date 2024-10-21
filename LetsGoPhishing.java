@@ -2,17 +2,32 @@ import java.util.Scanner;
 
 public class LetsGoPhishing {
     public static void main(String[] args) {
-        String password;
+        String password = "";
+        char yn;
         boolean systemRunning = true;
+        boolean customPassword = false;
         Scanner input = new Scanner(System.in);
         PasswordControl passkey = new PasswordControl();
         AnsiColors color = new AnsiColors();
 
         do {
+            System.out.println(color.yellow() + color.blackBackground() + "Hello, user! Would you like to set a particular password for this game? (Y/N)" + color.reset());
+            do {
+                yn = input.nextLine().charAt(0);
+                if (yn == 'Y' || yn == 'y') {
+                    customPassword = true;
+                    password = passkey.setPassword(input);
+                } else if (yn == 'N' || yn == 'n') {
+                    customPassword = false;
+                    System.out.println("Randomizing password now...");
+                    password = passkey.randomize();
+                } else {
+                    System.out.println(color.red() + color.blackBackground() + "Invalid selection. Please try again." + color.reset());
+                }
+            } while (yn != 'Y' && yn != 'y' && yn != 'N' && yn != 'n');
             resetTerminal();
-            password = passkey.randomize();
             System.out.println(intro(color));
-            guessing(color, input, password);
+            guessing(color, input, password, customPassword);
             systemRunning = playAgain(color, input, password);
         } while (systemRunning);
 
@@ -31,23 +46,29 @@ public class LetsGoPhishing {
     /**
      * The main guts of the game.
      * @param color Needed for custom colors.
-     * @param input Needed as a scanner.
      * @param password password for user to guess.
     */
-    public static void guessing(AnsiColors color, Scanner input, String password) {
-        String guess = "";
+    public static void guessing(AnsiColors color, Scanner input, String password, boolean customPassword) {
+        String guess;
+        
+        if (customPassword == true) {
+            input.nextLine();
+        }
         do {
             System.out.print(color.yellow() + color.blackBackground() + "Enter password:" + color.reset() + " ");
-            guess = input.next();
+            guess = input.nextLine();
+            
             if (guess.equals(password)) {
                 String userName = "";
                 System.out.print(color.green() + color.blackBackground() + "We have a winner! Please, tell us your name:" + color.reset() + " ");
-                userName = input.next();
-                if (userName.equals("") || userName.equals("No") || userName.equals("I will not give you my name.") || userName.equals("I will not give you my name") || userName.equals("i will not give you my name") || userName.equals("no") || userName.equals("yes") || userName.equals("Yes")) {
-                    System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too! Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this, that can store that information." + color.reset());
+                userName = input.nextLine();
+                
+                if (userName.isEmpty() || userName.equalsIgnoreCase("No") || 
+                    userName.equalsIgnoreCase("I will not give you my name.")) {
+                    System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too!" + color.reset());
                     System.out.println(color.green() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
                 } else {
-                    System.out.println(color.red() + color.blackBackground() + "Never give ANYONE you don't know personal information, and DEFINITELY not over a program like this that can store that information." + color.reset());
+                    System.out.println(color.red() + color.blackBackground() + "Never give ANYONE you don't know personal information." + color.reset());
                     System.out.println(color.red() + color.blackBackground() + "Congratulations for cracking the password, >> " + color.purple() + userName + color.red() + " <<." + color.reset());
                 }
             } else {
@@ -66,7 +87,6 @@ public class LetsGoPhishing {
         char choice = 'A';
         do {
             System.out.println(color.yellow() + color.blackBackground() + "Would you like to play again (Y/N)?" + color.reset());
-            input.nextLine();
             choice = input.nextLine().charAt(0);
             if (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n') {
                 System.out.println(color.red() + color.blackBackground() + "Invalid selection. Please try again." + color.reset());
@@ -87,37 +107,8 @@ public class LetsGoPhishing {
      * Prints in a bunch of new lines to declutter the terminal
     */
     public static void resetTerminal() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        for (int i = 0; i < 100; i++) {
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        }
     }
 }
