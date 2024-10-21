@@ -6,27 +6,41 @@ public class LetsGoPhishing {
         char yn;
         boolean systemRunning = true;
         boolean customPassword = false;
+        boolean randomPasswords = false;
         Scanner input = new Scanner(System.in);
         PasswordControl passkey = new PasswordControl();
         AnsiColors color = new AnsiColors();
 
+        System.out.println(color.yellow() + color.blackBackground() + "Hello, user! Would you like to set a particular password for this game? (Y/N)" + color.reset());
         do {
-            System.out.println(color.yellow() + color.blackBackground() + "Hello, user! Would you like to set a particular password for this game? (Y/N)" + color.reset());
-            do {
-                yn = input.nextLine().charAt(0);
-                if (yn == 'Y' || yn == 'y') {
-                    customPassword = true;
-                    password = passkey.setPassword(input);
-                } else if (yn == 'N' || yn == 'n') {
-                    customPassword = false;
-                    System.out.println("Randomizing password now...");
-                    password = passkey.randomize();
-                } else {
-                    System.out.println(color.red() + color.blackBackground() + "Invalid selection. Please try again." + color.reset());
-                }
-            } while (yn != 'Y' && yn != 'y' && yn != 'N' && yn != 'n');
+            yn = input.nextLine().charAt(0);
+            if (yn == 'Y' || yn == 'y') {
+                customPassword = true;
+                password = passkey.setPassword(input);
+            } else if (yn == 'N' || yn == 'n') {
+                customPassword = false;
+                System.out.println("Will set random passwords for this game.");
+                randomPasswords = true;
+                password = passkey.randomize();
+            } else {
+                System.out.println(color.red() + color.blackBackground() + "Invalid selection. Please try again." + color.reset());
+            }
+        } while (yn != 'Y' && yn != 'y' && yn != 'N' && yn != 'n');
+
+        do {
             resetTerminal();
             System.out.println(intro(color));
+
+            if (customPassword == true) {
+                input.nextLine();
+                customPassword = false;
+            } else if (customPassword = false){
+                customPassword = false;
+            }
+
+            if (randomPasswords) {
+                password = passkey.randomize();
+            }
             guessing(color, input, password, customPassword);
             systemRunning = playAgain(color, input, password);
         } while (systemRunning);
@@ -50,10 +64,6 @@ public class LetsGoPhishing {
     */
     public static void guessing(AnsiColors color, Scanner input, String password, boolean customPassword) {
         String guess;
-        
-        if (customPassword == true) {
-            input.nextLine();
-        }
         do {
             System.out.print(color.yellow() + color.blackBackground() + "Enter password:" + color.reset() + " ");
             guess = input.nextLine();
@@ -63,8 +73,7 @@ public class LetsGoPhishing {
                 System.out.print(color.green() + color.blackBackground() + "We have a winner! Please, tell us your name:" + color.reset() + " ");
                 userName = input.nextLine();
                 
-                if (userName.isEmpty() || userName.equalsIgnoreCase("No") || 
-                    userName.equalsIgnoreCase("I will not give you my name.")) {
+                if (userName.isEmpty() || userName.equalsIgnoreCase("No") || userName.equalsIgnoreCase("I will not give you my name.")) {
                     System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too!" + color.reset());
                     System.out.println(color.green() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
                 } else {
