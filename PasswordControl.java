@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PasswordControl {
-    String[] passwords = new String[] { "password1", "password2", "password3", "password4", "password5" }; // Enter passwords like shown, making sure not to mess with code. Don't change "null"
+    String[] passwords = new String[] { "password1", "password2", "password3", "password4", "password5" }; // Enter passwords like shown, making sure not to mess with code.
     int bound = 5; // Make sure number here is the number of passwords you have available, otherwise some may not show up.
 
     public String randomize() {
