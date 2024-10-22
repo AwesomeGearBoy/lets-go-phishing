@@ -2,11 +2,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class PasswordControl {
-    String[] passwords = new String[] { "password1", "password2", "password3" }; // Enter passwords like shown, making sure not to mess with code.
+    String[] passwords = new String[] { "password1", "password2", "password3", "password4", "password5" }; // Enter passwords like shown, making sure not to mess with code. Don't change "null"
+    int bound = 5; // Make sure number here is the number of passwords you have available, otherwise some may not show up.
 
     public String randomize() {
         Random rand = new Random();
-        int randomPassword = rand.nextInt(0, 3); // Make sure second number here is the number of passwords you have available, otherwise some may not show up.
+        int randomPassword = rand.nextInt(0, bound);
         return passwords[randomPassword];
     }
 
@@ -21,23 +22,22 @@ public class PasswordControl {
     public String setPassword(Scanner input) {
         int choice;
         AnsiColors color = new AnsiColors();
-        System.out.println(color.yellow() + color.blackBackground() +  "Alright! Please choose the password to set:" + color.reset());
+        System.out.println(color.yellow() + color.blackBackground() + "Alright! Please choose the password to set:" + color.reset());
         listPasswords();
+        
         while (true) {
-            System.out.print("Enter your choice (index): ");
+            System.out.print(color.yellow() + color.blackBackground() + "Enter your choice:" + color.reset() + " ");
             if (input.hasNextInt()) {
                 choice = input.nextInt();
-                if (choice >= 0 && choice < passwords.length && passwords[choice] != null) {
-                    break;
+                if (choice > 0 && choice <= passwords.length && passwords[choice - 1] != null) {
+                    return passwords[choice - 1];
                 } else {
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println(color.red() + color.blackBackground() + "Invalid choice. Please try again." + color.reset());
                 }
             } else {
-                System.out.println("Please enter a valid number.");
+                System.out.println(color.red() + color.blackBackground() + "Please enter a valid number." + color.reset());
                 input.next();
             }
         }
-
-        return passwords[choice - 1];
     }
 }
