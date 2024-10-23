@@ -24,6 +24,7 @@ public class PasswordControl {
         AnsiColors color = new AnsiColors();
         System.out.println(color.yellow() + color.blackBackground() + "Alright! Please choose the password to set:" + color.reset());
         listPasswords();
+        System.out.println(color.white() + color.blackBackground() + "Please type an integer as your choice." + color.reset());
         
         while (true) {
             System.out.print(color.yellow() + color.blackBackground() + "Enter your choice:" + color.reset() + " ");

@@ -64,13 +64,13 @@ public class LetsGoPhishing {
                     userName = input.nextLine();
                     
                     if (userName.isEmpty() || userName.equalsIgnoreCase("No") || userName.equalsIgnoreCase("I will not give you my name.")) {
-                        System.out.println(color.cyan() + color.blackBackground() + "Good! You passed that test too! Never give ANYONE you don't know personal information. ESPECIALLY not over a program like this that can store that information." + color.reset());
-                        System.out.println(color.green() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
+                        System.out.println(color.cyan() + color.blackBackground() + "Congratulations for cracking the password!" + color.reset());
                     } else {
-                        System.out.println(color.red() + color.blackBackground() + "Never give ANYONE you don't know personal information. ESPECIALLY not over a program like this that can store that information." + color.reset());
-                        System.out.println(color.red() + color.blackBackground() + "Congratulations for cracking the password, >> " + color.purple() + userName + color.red() + " <<." + color.reset());
+                        System.out.println(color.cyan() + color.blackBackground() + "Congratulations for cracking the password, " + userName + "!" + color.reset());
+                        System.out.println(color.blue() + color.blackBackground() + "Remember to use caution when putting your personal information into unfamiliar programs. You never know what they could store." + color.reset());
+
                         try (BufferedWriter writer = new BufferedWriter(new FileWriter("list-of-names.txt", true))) {
-                            writer.write(" - " + userName);
+                            writer.write("  { " + userName + " }");
                             writer.newLine();
                         } catch (IOException e) {
                             System.err.println("An error occurred while writing to the file: " + e.getMessage());
