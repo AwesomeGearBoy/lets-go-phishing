@@ -1,5 +1,7 @@
 ### Welcome to *Let's Go Phishing*
-*Let's Go Phishing* is a game created in Java made to teach about how hackers can use phishing to guess a password of a user. Hackers can use personal information found in emails, social media, and other sources to guess at a password for a user. You, as someone who works in cybersecurity, will teach this by sending emails out to people in your workplace with either real or fake personal information. When the time comes, run this program on a computer and have people guess at what the password is. This game allows multiple passwords to be entered and randomly picked each time the game runs.
+*Let's Go Phishing* is a game created in Java made to teach about how hackers can use phishing to guess a password of a user. Hackers can use personal information found in emails, social media, and other sources to guess at a password for a user. You, as someone who works in cybersecurity, will teach this by sending emails out to people in your workplace with either real or fake personal information. When the time comes, run this program on a computer and have people guess at what the password is. This game allows multiple passwords to be entered and randomly picked each time the game runs, or chosen within the program.
+
+The command `/new password` will restart the game and allow you to choose a new password at any time during actual gameplay.
 
 ### Setting custom passwords
 By default, the three passwords are `password1`, `password2`, and `password3`. To change this, go to the file called `PasswordControl.java`. It will look like below:
